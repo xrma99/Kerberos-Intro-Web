@@ -2,13 +2,13 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h3 style="text-align:center"><strong>Kerberos Protocol</strong></h3>
+<h2 style="text-align:center"><strong>Kerberos Protocol</strong></h2>
 <div>
     <p>
         Kerberos is a computer-network authentication protocol that works on the basis of tickets to allow nodes communicating over a non-secure network to prove their identity to one another in a secure manner. The protocol was named after the character Kerberos (or Cerberus) from Greek mythology, the ferocious three-headed guard dog of Hades. Its designers aimed it primarily at a client–server model and it provides mutual authentication—both the user and the server verify each other's identity. Kerberos protocol messages are protected against eavesdropping and replay attacks.
     </p>
     <div align="center">
-        <img src="~/images/Dog.png" style="width:50%;height:50%" />
+        <img src="~/images/Dog.png" style="width:35%;height:35%" />
     </div>
     
 
@@ -26,14 +26,80 @@
 
 </div>
 
-<div id="process">
-    <h5><strong>Client Authentication - Authentication Server</strong></h5>
+<br />
+<br />
+
+<div id="process" style="text-align:center">
+
+    <h3 style="text-align:center"><strong>Process</strong></h3>
+    <h4><strong>Client Authentication - Authentication Server</strong>: Verify identity.</h4>
+    <img src="~/images/AS.JPG" style="width:30%;height:30%" />
     <p>
-        Verify identity.
+        Ticket-Granting-Ticket (TGT): the client ID, client network address, ticket validity period, and the client/TGS session key
     </p>
-    <h5><strong>Service Authentication - Ticket-granting Service</strong></h5>
-    <p>
-        Get permission of the service.
-    </p>
-    <h5><strong>Get Wanted Service - Service Server</strong></h5>
+
+    <br />
+    <hr style="width:80%"/>
+    <br />
+
+    <h4><strong>Service Authentication - Ticket-granting Service</strong>: get permission of the service</h4>
+    <img src="~/images/TGS.JPG" style="width:30%;height:30%" />
+    <div>
+
+        <p>
+            Ticket-Granting-Ticket (TGT): the client ID, client network address, ticket validity period, and the client/TGS session key
+        </p>
+        <p>
+            Authenticator*: the client ID and the timestamp
+        </p>
+        <p>
+            Client-to-server ticket: the client ID, client network address, validity period and Client/Server Session Key
+        </p>
+    </div>
+
+    <br />
+    <hr style="width:80%"/>
+    <br />
+
+    <h4><strong>Get Wanted Service - Service Server</strong></h4>
+    <img src="~/images/SS.JPG" style="width:30%;height:30%" />
+    <div>
+        <p>
+            Client-to-server ticket: the client ID, client network address, validity period and Client/Server Session Key
+        </p>
+        <p>
+            Authenticator^: the client ID, timestamp
+        </p>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div id="D&L">
+    <h3 style="text-align:center"><strong>Drawbacks and Limitations</strong></h3>
+    <ol>
+        <li>
+            Single point of failure: It requires continuous availability of a central server. When the Kerberos server is down, new users cannot log in. This can be mitigated by using multiple Kerberos servers and fallback authentication mechanisms.
+        </li>
+        <li>
+            Kerberos has strict time requirements(Timestamps existence), which means the clocks of the involved hosts must be synchronized within configured limits. The tickets have a time availability period and if the host clock is not synchronized with the Kerberos server clock, the authentication will fail. The default configuration per MIT requires that clock times be no more than five minutes apart. In practice Network Time Protocol daemons are usually used to keep the host clocks synchronized. Note that some servers (Microsoft's implementation being one of them) may return a KRB_AP_ERR_SKEW result containing the encrypted server time in case both clocks have an offset greater than the configured maximum value. In that case, the client could retry by calculating the time using the provided server time to find the offset. This behavior is documented in RFC 4430.
+        </li>
+        <li>
+            The administration protocol is not standardized and differs between server implementations. Password changes are described in RFC 3244.
+        </li>
+        <li>
+            In case of symmetric cryptography adoption (Kerberos can work using symmetric or asymmetric (public-key) cryptography), since all authentications are controlled by a centralized key distribution center (KDC), compromise of this authentication infrastructure will allow an attacker to impersonate any user.
+        </li>
+        <li>
+            Each network service which requires a different host name will need its own set of Kerberos keys. This complicates virtual hosting and clusters.
+        </li>
+        <li>
+            Kerberos requires user accounts, user clients and the services on the server to all have a trusted relationship to the Kerberos token server (All must be in the same Kerberos domain or in domains that have a trust relationship between each other). Kerberos cannot be used in scenarios where users want to connect to services from unknown/untrusted clients as in a typical Internet or cloud computer scenario, where the authentication provider typically does not have knowledge about the users client system.
+        </li>
+        <li>
+            The required client trust makes creating staged environments (e.g., separate domains for test environment, pre-production environment and production environment) difficult: Either domain trust relationships need to be created that prevent a strict separation of environment domains or additional user clients need to be provided for each environment.
+        </li>
+    </ol>
+
 </div>
