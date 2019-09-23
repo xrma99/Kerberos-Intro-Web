@@ -15,7 +15,7 @@ namespace Keberos.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult NTLM()
         {
             ViewData["Message"] = "Your application description page.";
 

@@ -2,6 +2,19 @@
     ViewData["Title"] = "Home Page";
 }
 
+<style>
+    .subcontent{
+        text-indent:2em
+    }
+    .ex{
+        width:90%;
+        height:90%;
+        display:block;
+        margin-left: auto;
+        margin-right: auto
+    }
+</style>
+
 <h2 style="text-align:center"><strong>Kerberos Protocol</strong></h2>
 <div>
     <p>
@@ -76,6 +89,56 @@
 <br />
 <br />
 
+<div id="example">
+    <h3 style="text-align:center"><strong>Example</strong></h3>
+    <h5>
+        <strong>
+            Click <a href="~/images/KerberosExample.zip" download="package.zip"><u>here</u></a> to get the example file.
+        </strong>
+        (recommand using <a href="https://www.microsoft.com/en-sg/download/details.aspx?id=4865"><i>Network Monitor</i></a> to open it)
+    </h5>
+    <br />
+    <h5><strong>1. Catch Kerberos Packets</strong></h5>
+    <p>
+        System Center Virtual Machine Manager uses Kerberos-based authentication. If you are using Kerberos-based authentication, you must configure a Service Principal Name (SPN) for Network Controller in Active Directory. The SPN is a unique identifier for the Network Controller service instance, which is used by Kerberos authentication to associate a service instance with a service login account.
+    </p>
+    <p>
+        Usually when joining the domain, the SPN will be configured automatically.
+    </p>
+    <p>About SPN:</p>
+    <p>
+        A service principal name (SPN) is a unique identifier of a service instance. <strong>SPNs are used by Kerberos authentication to associate a service instance with a <a style="color:red">service logon account</a>.</strong> This allows a client application to request that the service authenticate an account even if the client does not have the account name.
+        <br />
+        <strong>If you install multiple instances of a service on computers throughout a forest, each instance must have its own SPN.</strong> A given service instance can have multiple SPNs if there are multiple names that clients might use for authentication. For example, an SPN always includes the name of the host computer on which the service instance is running, so a service instance might register an SPN for each name or alias of its host.
+        <br />
+        Before the Kerberos authentication service can use an SPN to authenticate a service, the SPN must be registered on the account object that the service instance uses to log on. A given SPN can be registered on only one account. For Win32 services, a service installer specifies the logon account when an instance of the service is installed. The installer then composes the SPNs and writes them as a property of the account object in Active Directory Domain Services. If the logon account of a service instance changes, the SPNs must be re-registered under the new account.
+        <br />
+        When a client wants to connect to a service, it locates an instance of the service, composes an SPN for that instance, connects to the service, and presents the SPN for the service to authenticate.
+    </p>
+
+    <h5><strong>2. Set the filter to "Kerberosv5"</strong></h5>
+    <img src="~/images/ProcessProve.JPG" style="width:100%" />
+
+    <h5><strong>3. With Authentication Server</strong></h5>
+    <p class="subcontent"><strong>Request</strong></p>
+    <img class="ex" src="~/images/ASreq.JPG" />
+    <p class="subcontent"><strong>Response</strong></p>
+    <img class="ex" src="~/images/ASrep.JPG" />
+
+
+    <h5><strong>4. With Ticket-Granting Service</strong></h5>
+    <p class="subcontent"><strong>Request</strong></p>
+    <img class="ex" src="~/images/TGSreq.JPG" />
+    <p class="subcontent"><strong>Response</strong></p>
+    <img class="ex" src="~/images/TGSrep.JPG" />
+
+    <h5><strong>5. With Server</strong></h5>
+    <p>The communication is completed via HTTPs Protocol. It cannot be caught via Network Monitor or Wireshark and can only be caught by Fiddler, which role plays as Gateway.</p>
+</div>
+
+<br />
+<hr />
+<br />
 <div id="D&L">
     <h3 style="text-align:center"><strong>Drawbacks and Limitations</strong></h3>
     <ol>
@@ -103,3 +166,5 @@
     </ol>
 
 </div>
+
+

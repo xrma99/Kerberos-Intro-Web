@@ -14,7 +14,6 @@ C:\Users\t-xinma\source\repos\Keberos\obj\Debug\netcoreapp2.1\Keberos.AssemblyIn
 C:\Users\t-xinma\source\repos\Keberos\obj\Debug\netcoreapp2.1\Keberos.TagHelpers.input.cache
 C:\Users\t-xinma\source\repos\Keberos\obj\Debug\netcoreapp2.1\Keberos.TagHelpers.output.cache
 C:\Users\t-xinma\source\repos\Keberos\obj\Debug\netcoreapp2.1\Keberos.RazorCoreGenerate.cache
-C:\Users\t-xinma\source\repos\Keberos\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
 C:\Users\t-xinma\source\repos\Keberos\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
 C:\Users\t-xinma\source\repos\Keberos\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 C:\Users\t-xinma\source\repos\Keberos\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
@@ -30,3 +29,4 @@ C:\Users\t-xinma\source\repos\Keberos\obj\Debug\netcoreapp2.1\Keberos.Views.pdb
 C:\Users\t-xinma\source\repos\Keberos\obj\Debug\netcoreapp2.1\Keberos.dll
 C:\Users\t-xinma\source\repos\Keberos\obj\Debug\netcoreapp2.1\Keberos.pdb
 C:\Users\t-xinma\source\repos\Keberos\obj\Debug\netcoreapp2.1\Keberos.csproj.CopyComplete
+C:\Users\t-xinma\source\repos\Keberos\obj\Debug\netcoreapp2.1\Razor\Views\Home\NTLM.g.cshtml.cs
